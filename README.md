@@ -1,4 +1,5 @@
 # Solar System NodeJS Application
+## Author: p sri satya.
 
 A simple HTML+MongoDB+NodeJS project to display Solar System and it's planets.
 
