@@ -39,6 +39,7 @@ jobs:
           run: npm test
           
         - name: Archive Test Result
+          if: failure() || success()
           uses: actions/upload-artifact@v6
           with:
             name: Mocha-Test-Result-${{matrix.node-version}}-${{matrix.os}}
