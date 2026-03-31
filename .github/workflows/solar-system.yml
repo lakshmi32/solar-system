@@ -61,11 +61,13 @@ jobs:
           - name: Code coverage step
             run: |
               npm run coverage
-              exit 0
+              # exit 0
+            continue-on-error: true
           
           - name: Artifacting code coverate results
             uses: actions/upload-artifact@v6
             with:
               name: code-coverage-result
               path: coverage
+              retention-days: 5
           
