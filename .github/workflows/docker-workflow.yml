@@ -8,9 +8,8 @@ jobs:
             - name: Checkout repo
               uses: actions/checkout@v4
               
-            - name: Login step
-              run: |
-                echo "Docker login step"
-                ls -a
-                cat Dockerfile
-              
+            - name: Docker Login
+              uses: docker/login-action@v4.1.0
+              with:
+                username: ${{ vars.DOCKER_USERNAME }}
+                password: ${{ secrets.DOCKER_PASSWORD }}
