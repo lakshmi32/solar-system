@@ -64,14 +64,27 @@ jobs:
     code-coverage:
       name: Code Coverage
       runs-on: ubuntu-latest
+      env:
+          MONGO_URI: mongodb://mongo:27017/superData
+          MONGO_USERNAME: non-prod-user
+          MONGO_PASSWORD: non-prod-password
+      services:
+        mongo-db:
+          image: mongo
+          ports:
+            - 27017:27017
+          options:
+            -- name mongo
+      container:
+        image: node:18
       steps:
           - name: Checkout repo
             uses: actions/checkout@v4
 
-          - name: Install node
-            uses: actions/setup-node@v3
-            with:
-              node-version: 24
+          # - name: Install node
+          #   uses: actions/setup-node@v3
+          #   with:
+          #     node-version: 24
 
           - name: Create cache for node Dependencies
             uses: actions/cache@v5.0.4
@@ -84,6 +97,7 @@ jobs:
 
           - name: Code coverage step
             run: |
+              node version
               npm run coverage
               # exit 0
             continue-on-error: true
