@@ -97,9 +97,7 @@ jobs:
 
           - name: Code coverage step
             run: |
-              node version
               npm run coverage
-              # exit 0
             continue-on-error: true
           
           - name: Artifacting code coverate results
