@@ -14,6 +14,13 @@ jobs:
                 username: ${{ vars.DOCKER_USERNAME }}
                 password: ${{ secrets.DOCKER_PASSWORD }}
 
+            - name: Github registry Login
+              uses: docker/login-action@v4.1.0
+              with:
+                registry: ghcr.io
+                username: ${{ github.repository_owner }}
+                password: ${{ secrets.GITHUB_TOKEN }}
+          
             - name: Docker Build for testing
               uses: docker/build-push-action@v7
               with:
@@ -29,9 +36,11 @@ jobs:
                 export IMAGE=${{ vars.DOCKER_USERNAME}}/solar-system:latest
                 chmod +x containerRunScript.sh
                 ./containerRunScript.sh
-            - name: Push image
+            - name: Push image - github container & Docker hub
               uses: docker/build-push-action@v7
               with:
                 push: true
                 context: .
-                tags:  ${{ vars.DOCKER_USERNAME}}/solar-system:latest
+                tags: |
+                     ${{ vars.DOCKER_USERNAME}}/solar-system:latest
+                     ghcr.io/${{ github.repository_owner}}/solar-system:latest
