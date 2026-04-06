@@ -1,0 +1,26 @@
+name: Deployment_workflow
+on:
+    push:
+    workflow_dispatch:
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Repo
+              uses: actions/checkout@v4
+
+            - name: Set up kubectl
+              id: install-kubectl
+              uses: azure/setup-kubectl@v4
+              with:
+                version: 'v1.26.0' # default is latest stable
+            
+            - name: Check kubectl installition
+              run: |
+                  kubectl version --short
+                  echo "___________________________________________________________________"
+                  kubectl get nodes
+
+            
+
+             
