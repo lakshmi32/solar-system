@@ -33,7 +33,11 @@ jobs:
                   kubectl version 
                   echo "___________________________________________________________________"
                   kubectl get nodes
-
+            - name: Run nginx pod
+              run: |
+                  kubectl run nginx-pod --image nginx
+                  kubectl get pods
+                  
             
 
              
