@@ -8,7 +8,7 @@ spec:
   rules:
   - http:
       paths:
-      - path: /solar
+      - path: /
         pathType: Prefix
         backend:
           service:
