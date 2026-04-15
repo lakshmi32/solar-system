@@ -56,7 +56,7 @@ jobs:
               run: |
                   INGRESS_IP=$(kubectl -n ingress-nginx get services ingress-nginx-controller -o jsonpath="{.status.loadBalancer.ingress[0].hostname}")
                   echo "Plain hostname: $INGRESS_IP"
-                  ENCODED_IP=$(echo "$INGRESS_IP" | base64)
+                  ENCODED_IP=$(echo -n "$INGRESS_IP" | base64)
                   echo "INGRESS_HOSTNAME=$ENCODED_IP" >> "$GITHUB_OUTPUT"
 
             
