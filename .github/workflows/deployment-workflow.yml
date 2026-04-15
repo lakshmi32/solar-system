@@ -66,6 +66,11 @@ jobs:
             - name: Check manifest files after replacing placeholders
               run: cat kubernetes/development/*.yaml
 
+            - name: Create namespace
+              run: |
+                kubectl create namespace ${{ vars.NAMESPACE }}
+                kubectl get ns
+
             - name: Create MongoDB secrets
               run: |
                   kubectl -n ${{ vars.NAMESPACE }} create secret generic mongo-db-creds \
