@@ -144,7 +144,7 @@ jobs:
 
         - name: Upload to AWS S3
           run: |
-               aws s3 cp report s3://${{ secrets.AWS_BUCKET}}/reports-${{ github.sha }} --recursive
+               aws s3 cp reports-${{ github.sha }} s3://${{ secrets.AWS_BUCKET}}/reports-${{ github.sha }} --recursive
 
         
 
