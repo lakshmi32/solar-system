@@ -26,7 +26,7 @@ jobs:
               - 27017:27017
         strategy:
           matrix:
-            node-version: [24 , 20]
+            node-version: [24]
             os: [ubuntu-latest]
             # exclude:
             #   - node-version: 20
@@ -111,22 +111,33 @@ jobs:
       needs: [code-coverage]
       steps:
         - name: download test artifact
-          uses: actions/download-artifact@v8
+          uses: actions/download-artifact@v6
           with:
             name: Mocha-Test-Result-24-ubuntu-latest
-
-        - name: download test artifact-20
-          uses: actions/download-artifact@v8
-          with:
-            name: Mocha-Test-Result-20-ubuntu-latest
+            
 
         - name: download code coverage artifact
-          uses: actions/download-artifact@v8
+          uses: actions/download-artifact@v6
           with:
             name: code-coverage-result
 
         - name: display the file
           run: ls -l
+        
+        - name: Moviing artifacts into a single directory
+          run: |
+            mkdir reports-${{ github.sha }}
+            mv Mocha-Test-Result-24-ubuntu-latest reports-${{ github.sha }}/
+            mv code-coverage-result reports-${{ github.sha }}/
+
+            ls -l
+            ls reports-${{ github.sha }}/
+
+        - name: Uploading reports to AWS
+          run: |
+            echo uploading .....
+
+        
 
     Docker-containerization:
       runs-on: ubuntu-latest
