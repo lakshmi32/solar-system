@@ -26,7 +26,7 @@ jobs:
               - 27017:27017
         strategy:
           matrix:
-            node-version: [24]
+            node-version: [24 , 20]
             os: [ubuntu-latest]
             # exclude:
             #   - node-version: 20
@@ -59,7 +59,7 @@ jobs:
           # if: failure() || success() || always() && (steps.unit-testing-step.outcome == 'success')
           uses: actions/upload-artifact@v6
           with:
-            name: Mocha-test-results/Mocha-Test-Result-${{matrix.node-version}}-${{matrix.os}}
+            name: Mocha-Test-Result-${{matrix.node-version}}-${{matrix.os}}
             path: test-results.xml
     code-coverage:
       name: Code Coverage
@@ -114,10 +114,12 @@ jobs:
           uses: actions/download-artifact@v8
           with:
             name: Mocha-Test-Result-24-ubuntu-latest
+
         - name: download code coverage artifact
           uses: actions/download-artifact@v8
           with:
             name: code-coverage-result
+            
         - name: display the file
           run: ls -l
 
