@@ -1,0 +1,20 @@
+name: Reusable workflow
+on:
+ push:
+jobs:
+    Development_job:
+      runs-on: ubuntu-latest
+      env:
+        PROJECT: "Development project"
+      steps:
+       - name: First_step
+         run: echo ${{ env.PROJECT }}
+    
+    Production_job:
+      runs-on: ubuntu-latest
+      env:
+        PROJECT: "Production project"
+      steps:
+        - name: First_step
+          run: echo ${{ env.PROJECT }}
+
