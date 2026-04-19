@@ -135,13 +135,16 @@ jobs:
             ls -l
             ls reports-${{ github.sha }}/
 
-        - name: Uploading reports to AWS
-          uses: shallwefootball/s3-upload-action@master
+        - name: Configure AWS Credentials
+          uses: aws-actions/configure-aws-credentials@v6.1.0
           with:
-            aws_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-            aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
-            aws_bucket: ${{ secrets.AWS_BUCKET }}
-            source_dir: reports-${{ github.sha }}
+            aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            aws-region: ${{ secrets.AWS_REGION }}
+
+        - name: Upload to AWS S3
+          run: |
+               aws s3 cp report s3://${{ secrets.AWS_BUCKET}}/reports-${{ github.sha }} --recursive
 
         
 
