@@ -123,10 +123,10 @@ jobs:
             name: code-coverage-result
             path: ./code-coverage-result
 
-        - name: display the file
+        - name: display the file 
           run: ls -l
         
-        - name: Moviing artifacts into a single directory
+        - name: Moviing artifacts into a single directory into reports
           run: |
             mkdir reports-${{ github.sha }}
             mv Mocha-Test-Result-24-ubuntu-latest reports-${{ github.sha }}/
