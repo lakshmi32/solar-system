@@ -8,6 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     outputs: 
       name: "Jai Hanuman"
+    steps:
+      - name: into step
+        run: echo "Hello world"
 
   Development_job:
     uses: ./.github/workflows/reusable-workflow.yml
