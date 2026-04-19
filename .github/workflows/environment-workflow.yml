@@ -1,4 +1,4 @@
-name: Reusable workflow
+name: Environment workflow
 on:
  push:
 jobs:
@@ -8,7 +8,7 @@ jobs:
         PROJECT: "Development project"
       steps:
        - name: First_step
-         run: echo ${{ env.PROJECT }}
+         run: echo "This is ${{ env.PROJECT }}"
     
     Production_job:
       runs-on: ubuntu-latest
@@ -16,7 +16,4 @@ jobs:
         PROJECT: "Production project"
       steps:
         - name: First_step
-          run: echo ${{ env.PROJECT }}
-
-        - name: Environment printing
-          run: echo ${{ github.ref_name }}
+          run: echo "This is ${{ env.PROJECT }}"

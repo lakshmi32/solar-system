@@ -112,7 +112,7 @@ jobs:
     
     prod-deployment:
         runs-on: ubuntu-latest
-        if: github.ref == 'refs/head/main'
+        if: github.ref == 'refs/head/main' #"ref": "refs/heads/feature/exploring-workflow",
         environment:
           name: Production
           url: https://${{ steps.set-ingress-hostname.outputs.INGRESS_HOSTNAME }}
