@@ -13,18 +13,15 @@ jobs:
               uses: actions/checkout@v6
             - name: Track changes
               id: change
-              uses: meiroio/paths-filter@v2
+              uses: dorny/paths-filter@v3
               with:
                 filters: |
                     root:
-                        pattern:
-                            - /**
+                        - /**
                     backend:
-                        pattern:
-                            - backend/**
+                        - backend/**
                     images:
-                        pattern:
-                            - images/**
+                        - images/**
 
     run-tests:
         runs-on: ubuntu-latest
@@ -36,11 +33,11 @@ jobs:
               if:  needs.change.outputs.backend-change == 'true'
               run: |
                 echo "Backend folder changed"
-            - name: detech images change
+            - name: detect images change
               if: needs.change.outputs.images-change == 'true'
               run: |
                 echo "Image folder changed"
-            - name: detech Root folder
+            - name: detect Root folder
               if: needs.change.outputs.root-change == 'true'
               run: |
                 echo "Root folder changed"
