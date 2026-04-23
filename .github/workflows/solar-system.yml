@@ -99,8 +99,9 @@ jobs:
 
           # - name: Install dependencies
           #   run: npm install
+
           - name: "Composite action- Cache & Install NPM dependencies"
-            uses: ./.github/custom-actions/npm-actions/action.yaml
+            uses: ./.github/custom-actions/npm-actions
             with: 
               path-of-folder: node_modules
 
