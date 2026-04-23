@@ -11,17 +11,18 @@ jobs:
         steps:
             - name: Checkout repo
               uses: actions/checkout@v6
+              
             - name: Track changes
               id: change
               uses: dorny/paths-filter@v3
               with:
                 filters: |
                     root:
-                        - /**
+                        - '/**'
                     backend:
-                        - backend/**
+                        - 'backend/**'
                     images:
-                        - images/**
+                        - 'images/**'
 
     run-tests:
         runs-on: ubuntu-latest
