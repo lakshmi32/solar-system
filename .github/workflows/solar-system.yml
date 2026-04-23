@@ -221,7 +221,7 @@ jobs:
             SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
             SLACK_ICON: https://github.com/rtCamp.png?size=48
             SLACK_MESSAGE: "github action completed. triggered by - ${{ github.repository_owner }} , Branch - ${{ github.ref_name }}"
-            SLACK_TITLE: 'Action status'
+            SLACK_TITLE: 'Action Status'
             SLACK_USERNAME: githubBot
             SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
