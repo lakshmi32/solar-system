@@ -16,11 +16,9 @@ jobs:
     strategy:
       matrix:
         nodejs-versions: [ 18,20 ]
-        operating-system: [ ubuntu-latest, macos-latest ]
-        exclude:
-         - nodejs-versions: 18
-           operating-system: macos-latest
+        operating-system: [ ubuntu-latest ] 
     runs-on: ubuntu-latest
+    
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v3
