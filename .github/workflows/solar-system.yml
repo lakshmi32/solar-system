@@ -56,7 +56,7 @@ jobs:
         run: npm run coverage
 
       - name: Archive Coverage Report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v7
         with:
           name: Code-Coverage-Result
           path: coverage
