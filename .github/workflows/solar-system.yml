@@ -15,8 +15,8 @@ jobs:
     name: Unit Testing
     strategy:
       matrix:
-        nodejs-versions: [18,20]
-        operating-system: [ubuntu-latest, macos-latest]
+        nodejs-versions: [ 18,20 ]
+        operating-system: [ ubuntu-latest, macos-latest ]
         exclude:
          - nodejs-versions: 18
            operating-system: macos-latest
@@ -69,7 +69,7 @@ jobs:
           name: Code-Coverage-Result
           path: coverage
           retention-days: 5
-          
+
 
 
 
