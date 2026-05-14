@@ -18,7 +18,7 @@ jobs:
         nodejs-versions: [18,19,20]
         operating-system: [ubuntu-latest, masos-latest]
         exclude:
-         - nodejs-version: 18
+         - nodejs-versions: 18
            operating-system: macos-latest
     runs-on: ubuntu-latest
     steps:
