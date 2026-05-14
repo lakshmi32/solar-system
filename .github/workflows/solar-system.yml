@@ -15,10 +15,10 @@ jobs:
     name: Unit Testing
     strategy:
       matrix:
-        nodejs-versions: [25,26]
+        nodejs-versions: [18,20]
         operating-system: [ubuntu-latest, macos-latest]
         exclude:
-         - nodejs-versions: 25
+         - nodejs-versions: 18
            operating-system: macos-latest
     runs-on: ubuntu-latest
     steps:
@@ -37,8 +37,8 @@ jobs:
       if: failure() && (steps.nodejs-unit-testing.outcome == 'failure' || steps.nodejs-unit-testing.outcome == 'success')
       uses: actions/upload-artifact@v7
       with:
-          name: Mocha-Test-Result
-          path: test-results.xml
+       name: Mocha-Test-Result
+       path: test-results.xml
   code-coverage:
     name: Code Coverage
     runs-on: ubuntu-latest
