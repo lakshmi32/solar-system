@@ -96,7 +96,7 @@ jobs:
                 name: Code-Coverage-Result
                 path: coverage
                 retention-days: 5
-    containerization:
+    docker:
        permissions:
         packages: write
        name: docker
